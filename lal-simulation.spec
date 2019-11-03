@@ -5,13 +5,14 @@
 Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
-Version:	1.7.3
+Version:	1.9.1
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.ligo.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
-# Source0-md5:	275652af9bf41413de40f7125e4a3152
+# Source0-md5:	0a963ccea2b38e0168a845eda49cccf9
 Patch0:		%{name}-env.patch
+Patch1:		no-Werror.patch
 URL:		https://wiki.ligo.org/DASWG/LALSuite
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -94,6 +95,7 @@ Wiązania Pythona do biblioteki LAL Simulation.
 %prep
 %setup -q -n lalsimulation-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -103,9 +105,8 @@ Wiązania Pythona do biblioteki LAL Simulation.
 %{__automake}
 %configure \
 	%{!?with_openmp:--disable-openmp} \
-	--disable-silent-rules \
 	--enable-swig
-%{__make}
+%{__make} V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -129,15 +130,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README
+%doc AUTHORS README.md
 %attr(755,root,root) %{_bindir}/lalsim-*
 %attr(755,root,root) %{_bindir}/lalsimulation_version
 %attr(755,root,root) %{_libdir}/liblalsimulation.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.16
+%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.20
 %{_datadir}/lalsimulation
 /etc/shrc.d/lalsimulation-user-env.csh
 /etc/shrc.d/lalsimulation-user-env.fish
 /etc/shrc.d/lalsimulation-user-env.sh
+%{_mandir}/man1/lalsim*.1*
 
 %files devel
 %defattr(644,root,root,755)

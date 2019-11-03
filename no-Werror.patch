@@ -1,0 +1,10 @@
+--- lalsimulation-1.9.1/gnuscripts/lalsuite_gccflags.m4~	2018-12-20 17:16:39.000000000 +0100
++++ lalsimulation-1.9.1/gnuscripts/lalsuite_gccflags.m4	2019-11-03 20:43:58.635695277 +0100
+@@ -30,7 +30,6 @@
+       -g3
+       -Wall
+       -W
+-      -Werror
+       -Wmissing-prototypes
+       -Wstrict-prototypes
+       -Wshadow

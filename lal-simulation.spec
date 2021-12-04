@@ -5,12 +5,12 @@
 Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
-Version:	1.9.1
+Version:	3.0.0
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.ligo.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
-# Source0-md5:	0a963ccea2b38e0168a845eda49cccf9
+# Source0-md5:	1790f203ca631fa93dc69bddcd19d055
 Patch0:		%{name}-env.patch
 Patch1:		no-Werror.patch
 URL:		https://wiki.ligo.org/DASWG/LALSuite
@@ -23,8 +23,8 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
 BuildRequires:	octave-devel >= 1:3.2.0
 BuildRequires:	pkgconfig
-BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-numpy-devel >= 1:1.7
+BuildRequires:	python3-devel
+BuildRequires:	python3-numpy-devel
 BuildRequires:	swig >= 3.0.12
 BuildRequires:	swig-python >= 2.0.12
 BuildRequires:	tar >= 1:1.22
@@ -78,18 +78,18 @@ Octave interface for LAL Simulation.
 %description -n octave-lalsimulation -l pl.UTF-8
 Interfejs Octave do biblioteki LAL Simulation.
 
-%package -n python-lalsimulation
+%package -n python3-lalsimulation
 Summary:	Python bindings for LAL Simulation
 Summary(pl.UTF-8):	Wiązania Pythona do biblioteki LAL Simulation
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-lal >= 6.18.0
-Requires:	python-modules >= 1:2.6
+Requires:	python3-lal >= 6.18.0
+Requires:	python3-modules >= 1:2.6
 
-%description -n python-lalsimulation
+%description -n python3-lalsimulation
 Python bindings for LAL Simulation.
 
-%description -n python-lalsimulation -l pl.UTF-8
+%description -n python3-lalsimulation -l pl.UTF-8
 Wiązania Pythona do biblioteki LAL Simulation.
 
 %prep
@@ -134,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lalsim-*
 %attr(755,root,root) %{_bindir}/lalsimulation_version
 %attr(755,root,root) %{_libdir}/liblalsimulation.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.20
+%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.29
 %{_datadir}/lalsimulation
 /etc/shrc.d/lalsimulation-user-env.csh
 /etc/shrc.d/lalsimulation-user-env.fish
@@ -158,8 +158,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/octave/*/site/oct/*/lalsimulation.oct
 
-%files -n python-lalsimulation
+%files -n python3-lalsimulation
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/lalsimulation
-%attr(755,root,root) %{py_sitedir}/lalsimulation/_lalsimulation.so
-%{py_sitedir}/lalsimulation/*.py[co]
+%dir %{py3_sitedir}/lalsimulation
+%attr(755,root,root) %{py3_sitedir}/lalsimulation/_lalsimulation.so
+%{py3_sitedir}/lalsimulation/*.py
+%{py3_sitedir}/lalsimulation/__pycache__
+%dir %{py3_sitedir}/lalsimulation/nrfits
+%{py3_sitedir}/lalsimulation/nrfits/*.py
+%{py3_sitedir}/lalsimulation/nrfits/__pycache__
+%dir %{py3_sitedir}/lalsimulation/tilts_at_infinity
+%{py3_sitedir}/lalsimulation/tilts_at_infinity/*.py
+%{py3_sitedir}/lalsimulation/tilts_at_infinity/__pycache__

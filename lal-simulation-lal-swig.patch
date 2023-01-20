@@ -1,0 +1,13 @@
+--- lalsimulation-4.0.2/lib/LALSimSphHarmSeries.h.orig	2022-05-11 00:56:41.962040955 +0200
++++ lalsimulation-4.0.2/lib/LALSimSphHarmSeries.h	2023-01-20 21:58:48.535057665 +0100
+@@ -96,8 +96,8 @@ void XLALDestroySphHarmPolarTimeSeries(S
+ UINT4 XLALSphHarmPolarTimeSeriesGetMaxL(SphHarmPolarTimeSeries* ts);
+ 
+ #ifdef SWIG
+-SWIGLAL(OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModeAmplitude));
+-SWIGLAL(OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModePhase));
++SWIGLAL(RETURN_OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModeAmplitude));
++SWIGLAL(RETURN_OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModePhase));
+ #endif
+ 
+ REAL8TimeSeries* XLALSphHarmPolarTimeSeriesGetModeAmplitude(SphHarmPolarTimeSeries *ts, UINT4 l, INT4 m);

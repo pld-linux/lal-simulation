@@ -86,6 +86,7 @@ Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
 Requires:	python3-lal >= 7.2.2
 Requires:	python3-modules >= 1:3.5
+Obsoletes:	python-lalsimulation < 3
 
 %description -n python3-lalsimulation
 Python bindings for LAL Simulation.

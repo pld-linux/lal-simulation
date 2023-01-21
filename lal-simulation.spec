@@ -14,7 +14,7 @@ Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalsimulation-%{versio
 Patch0:		%{name}-env.patch
 Patch1:		no-Werror.patch
 Patch2:		%{name}-lal-swig.patch
-URL:		https://wiki.ligo.org/Computing/DASWG/LALSuite
+URL:		https://wiki.ligo.org/Computing/LALSuite
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gsl-devel >= 1.13

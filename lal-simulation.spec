@@ -5,20 +5,20 @@
 Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
-Version:	4.0.2
+Version:	5.4.0
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
-# Source0-md5:	0ec4c5f3c1392ad687a26a7a2f91d6b5
+# Source0-md5:	f379558d5008fc61ccb067c1c9694c0c
 Patch0:		%{name}-env.patch
 Patch1:		no-Werror.patch
-Patch2:		%{name}-lal-swig.patch
 URL:		https://wiki.ligo.org/Computing/LALSuite
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gsl-devel >= 1.13
-BuildRequires:	lal-devel >= 7.2.2
+BuildRequires:	help2man >= 1.37
+BuildRequires:	lal-devel >= 7.5.0
 %{?with_openmp:BuildRequires:	libgomp-devel}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
@@ -32,7 +32,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
 Requires:	gsl >= 1.13
-Requires:	lal >= 7.2.2
+Requires:	lal >= 7.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,7 +46,7 @@ Summary:	Header files for lal-simulation library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki lal-simulation
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	lal-devel >= 7.2.2
+Requires:	lal-devel >= 7.5.0
 
 %description devel
 Header files for lal-simulation library.
@@ -71,7 +71,7 @@ Summary:	Octave interface for LAL Simulation
 Summary(pl.UTF-8):	Interfejs Octave do biblioteki LAL Simulation
 Group:		Applications/Math
 Requires:	%{name} = %{version}-%{release}
-Requires:	octave-lal >= 7.2.2
+Requires:	octave-lal >= 7.5.0
 
 %description -n octave-lalsimulation
 Octave interface for LAL Simulation.
@@ -84,7 +84,7 @@ Summary:	Python bindings for LAL Simulation
 Summary(pl.UTF-8):	Wiązania Pythona do biblioteki LAL Simulation
 Group:		Libraries/Python
 Requires:	%{name} = %{version}-%{release}
-Requires:	python3-lal >= 7.2.2
+Requires:	python3-lal >= 7.5.0
 Requires:	python3-modules >= 1:3.5
 Obsoletes:	python-lalsimulation < 3
 
@@ -98,7 +98,6 @@ Wiązania Pythona do biblioteki LAL Simulation.
 %setup -q -n lalsimulation-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -137,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lalsim-*
 %attr(755,root,root) %{_bindir}/lalsimulation_version
 %attr(755,root,root) %{_libdir}/liblalsimulation.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.31
+%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.32
 %{_datadir}/lalsimulation
 /etc/shrc.d/lalsimulation-user-env.csh
 /etc/shrc.d/lalsimulation-user-env.fish
@@ -167,6 +166,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py3_sitedir}/lalsimulation/_lalsimulation.so
 %{py3_sitedir}/lalsimulation/*.py
 %{py3_sitedir}/lalsimulation/__pycache__
+%dir %{py3_sitedir}/lalsimulation/gwsignal
+%{py3_sitedir}/lalsimulation/gwsignal/*.py
+%{py3_sitedir}/lalsimulation/gwsignal/__pycache__
+%dir %{py3_sitedir}/lalsimulation/gwsignal/core
+%{py3_sitedir}/lalsimulation/gwsignal/core/*.py
+%{py3_sitedir}/lalsimulation/gwsignal/core/__pycache__
+%dir %{py3_sitedir}/lalsimulation/gwsignal/models
+%{py3_sitedir}/lalsimulation/gwsignal/models/*.py
+%{py3_sitedir}/lalsimulation/gwsignal/models/__pycache__
 %dir %{py3_sitedir}/lalsimulation/nrfits
 %{py3_sitedir}/lalsimulation/nrfits/*.py
 %{py3_sitedir}/lalsimulation/nrfits/__pycache__

@@ -6,7 +6,7 @@ Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
 Version:	5.4.0
-Release:	1
+Release:	
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz

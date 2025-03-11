@@ -6,7 +6,7 @@ Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
 Version:	5.4.0
-Release:	
+Release:	2
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
@@ -96,8 +96,8 @@ Wiązania Pythona do biblioteki LAL Simulation.
 
 %prep
 %setup -q -n lalsimulation-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 %{__libtoolize}

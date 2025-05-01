@@ -5,12 +5,12 @@
 Summary:	LAL Simulation library
 Summary(pl.UTF-8):	Biblioteka LAL Simulation
 Name:		lal-simulation
-Version:	5.4.0
-Release:	3
+Version:	6.1.0
+Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://software.igwn.org/lscsoft/source/lalsuite/lalsimulation-%{version}.tar.xz
-# Source0-md5:	f379558d5008fc61ccb067c1c9694c0c
+# Source0-md5:	13f5a1c0b4417feee26f7470c2ecd3c7
 Patch0:		%{name}-env.patch
 Patch1:		no-Werror.patch
 URL:		https://wiki.ligo.org/Computing/LALSuite
@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lalsim-*
 %attr(755,root,root) %{_bindir}/lalsimulation_version
 %attr(755,root,root) %{_libdir}/liblalsimulation.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.32
+%attr(755,root,root) %ghost %{_libdir}/liblalsimulation.so.37
 %{_datadir}/lalsimulation
 /etc/shrc.d/lalsimulation-user-env.csh
 /etc/shrc.d/lalsimulation-user-env.fish
